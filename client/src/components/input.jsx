@@ -38,8 +38,8 @@ export default class Test extends Component{
                 <div id="welcome">테스트!</div>
                 <div className="FormContainer">
                 <form onSubmit={this.handleSubmit}>
-                    <input type='text' name='model' onChange={this.handleChange}/><br/>
-                    <input type='text' name='inputShape' onChange={this.handleChange}/><br/>
+                    모델 : <input type='text' name='model' onChange={this.handleChange}/><br/>
+                    입력값 : <input type='text' name='inputShape' onChange={this.handleChange}/><br/>
                     <input type='submit' value='Submit'/>
                 </form>
                 </div>

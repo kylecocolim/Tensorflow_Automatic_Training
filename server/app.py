@@ -1,5 +1,6 @@
 from flask import Flask ,send_from_directory, request
 from flask_cors import CORS
+from inference.model import inference_load
 import os 
 app = Flask(__name__,static_folder='../client/build') 
 # Apply CORS
@@ -16,7 +17,11 @@ def receivetest():
     if request.method == 'POST':
         print('Connected')
         json_data = request.get_json()
-        print(json_data['payload'])
+        if len(json_data) >= 1:
+            model = json_data['payload']['model']
+            inputShape = json_data['payload']['inputShape']
+            model = inference_load(model,inputShape)
+            model.load()
         return 'OK'
 if __name__ == "__main__":
     app.run(debug=True,port=3000)

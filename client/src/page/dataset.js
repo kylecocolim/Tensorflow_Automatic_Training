@@ -1,15 +1,11 @@
 import React from 'react';
-import Filedirectory from '../components/filedirctory';
+import CSVSelector from '../components/loadCSV';
 
 const dataset = () =>{
-    return(
+    return (
         <div>
-            <div className="filedirectoryContainer">
-                <Filedirectory/>
-
-            </div>
+            <CSVSelector/>
         </div>
     )
 }
-
 export default dataset;

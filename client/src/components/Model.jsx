@@ -55,9 +55,9 @@ export default class Model extends Component{
     render(){
         return(
             <div>
-                <div id="welcome">테스트!</div>
+                <div id="welcome">Tensorflow Model Trainer</div>
                 <div className="FormContainer">
-                    <div className="inputForm">  
+                    <div className="ModelSelector">  
                     <form onSubmit={this.handleSubmit}>
                     <Form>
                         <Form.Group>
@@ -72,20 +72,24 @@ export default class Model extends Component{
                             </Form.Control>
                         </Form.Group>
                         </Form>
-                        Input Shape  <input type='text' name='inputShape' onChange={this.handleChange}/><br/>
-                        N_Classes <input type='text' name="n_Classes" onChange={this.handleChange}/>
-                        <input type='submit' value='Start'/>
+                        <span id="formexplain">Input Shape</span><div id="inputForm"><input type='text' name='inputShape' onChange={this.handleChange}/></div>
+                        <span id="formexplain">N_Classes </span><div id="inputForm"> <input type='text' name="n_Classes" onChange={this.handleChange}/> </div>
+        
+                        <div className="SwitchBox">
+                        <Form>
+                            <Form.Check 
+                                type="switch"
+                                id="custom-switch"
+                                label="Check this switch"/>
+                            </Form>
+                        </div>
+                        <input className="submitButton" type='submit' value='Start'/>
+
                     </form>
                     </div>
+                    
                 </div>
-                <div className="SwitchBox">
-                <Form>
-                    <Form.Check 
-                        type="switch"
-                        id="custom-switch"
-                        label="Check this switch"/>
-                    </Form>
-                </div>
+                
             </div>
         )
     }

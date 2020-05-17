@@ -32,7 +32,7 @@ class CustomModel():
         return Dense(filter=filterSize,activation=activation)(x)
     
    
-
+# Test Code
 if __name__ =="__main__":
     inputShape =(300,300,3)
     modelName = ['input','Conv','MaxPool','Conv']

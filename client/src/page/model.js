@@ -1,11 +1,12 @@
 import React from 'react';
 import Model from '../components/Model';
-import Communication from '../components/Communication';
+import DashBoard from '../components/DashBoard';
 const famousModel = () =>{
     return(
         <div>
+            <div id="welcome">Tensorflow Model Trainer</div>
             <Model/>
-            <Communication/>
+            <DashBoard/>
         </div>
     )
 }

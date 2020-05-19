@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
 .FormContainer{
     position : absolute;
-    top : 300px;
-    left : 200px;   
+    top : 150px;
+    left : 50px;   
     width : 350px;
-    height : 600px ;
-    background-color: yellowgreen;
+    height : 80% ;
+    border-color : white;
+    border : 1px solid;
+    background-color: #142850;
+    color : white;
 }
 .ModelSelector{
     position : relative;
@@ -30,10 +33,10 @@
 }
 #welcome{
     position: relative;
-    top: 100px;
+    top: 20px;
     font-family: 'Black Han Sans', sans-serif;
-    font-size : 64px;
-    color : black; 
+    font-size : 32px;
+    color : white; 
 }
 .SwitchBox{
     position: relative;

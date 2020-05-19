@@ -24,8 +24,7 @@ export default class Model extends Component{
         
     }
     getSelectValue(event){
-        console.log(this.state.model);
-        this.setState({ model : this.model.value});
+        this.setState({ [event.target.name] : event.target.value});
     }
     setIncludeTop(event){
         this.setState({include_top : this.include_top.value})
@@ -43,7 +42,11 @@ export default class Model extends Component{
             model: this.state.model,
             inputShape : this.state.inputShape,
             n_classes : this.state.n_classes,
-            include_top : this.state.include_top   
+            include_top : this.state.include_top,
+            loss : this.state.loss,
+            optimizer : this.state.optimizer,
+            batch_size : this.state.Batch_size,
+            metrics : this.state.Metrics
         };
         axios.post(`http://127.0.0.1:3000/api`, {payload})
         .then(res => {
@@ -59,7 +62,6 @@ export default class Model extends Component{
     render(){
         return(
             <div>
-                <div id="welcome">Tensorflow Model Trainer</div>
                 <div className="FormContainer">
                     <div className="ModelSelector">  
                     <form onSubmit={this.handleSubmit}>
@@ -77,7 +79,7 @@ export default class Model extends Component{
                         </Form.Group>
                         </Form>
                         <span id="formexplain">Input Shape</span><div id="inputForm"><input type='text' name='inputShape' onChange={this.handleChange}/></div>
-                        <span id="formexplain">N Classes </span><div id="inputForm"> <input type='text' name="n_Classes" onChange={this.handleChange}/> </div>
+                        <span id="formexplain">N Classes </span><div id="inputForm"> <input type='text' name="n_classes" onChange={this.handleChange}/> </div>
                         <span id="formexplain">Batch_size </span><div id="inputForm"> <input type='text' name="Batch_size" onChange={this.handleChange}/> </div>
                         <Form>
                         <Form.Group>
@@ -97,7 +99,7 @@ export default class Model extends Component{
                         <Form>
                         <Form.Group>
                             <Form.Label>Optimizer</Form.Label>
-                            <Form.Control as="select" name="Optimizer" ref={optimizer => this.optimizer=optimizer} onChange={this.getSelectValue.bind(this)}custom>
+                            <Form.Control as="select" name="optimizer" ref={optimizer => this.optimizer=optimizer} onChange={this.getSelectValue.bind(this)}custom>
                             <option>default</option>
                             <option>Adam</option>
                             <option>SGD</option>

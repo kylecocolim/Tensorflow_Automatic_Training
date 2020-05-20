@@ -1,0 +1,28 @@
+.DashBoardContainer{
+    position: absolute;
+    top : 150px;
+    left : 450px;
+    height : 80%;
+    width : 800px;
+    background-color: #white;
+    color: white;
+
+}
+.nav{
+    border-top : 1px solid;
+    border-left : 1px solid;
+    border-top-color: #222222;
+    border-left-color : #11131C;
+    border-bottom-color : #222222;
+
+}
+.nav-item{
+    color: white;
+}
+.nav-link.active{
+    background-color: #222222 !important;
+    color: #df7065 !important;
+}
+.nav-link:hover{
+    color : white;
+}

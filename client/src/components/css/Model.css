@@ -1,13 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap');
 .FormContainer{
     position : absolute;
     top : 150px;
     left : 50px;   
     width : 350px;
-    height : 80% ;
-    border-color : white;
-    border : 1px solid;
-    background-color: #142850;
+    height : 85% ;
+    background-color: #1f2940;
     color : white;
 }
 .ModelSelector{
@@ -27,16 +25,23 @@
 }
 #formexplain{
     position: relative;
-    left : 5px;
     margin-right : 10px;
     
 }
-#welcome{
+.custom-select{
     position: relative;
-    top: 20px;
-    font-family: 'Black Han Sans', sans-serif;
-    font-size : 32px;
-    color : white; 
+    left : 6px;
+    border-radius: 0;
+    background-color:#192038;
+    border : 1px solid #101426;
+    color : #fff;
+}
+#inputBox{
+    height: 40px;
+    width : 100%;
+    background-color: #192038;
+    border : 1px solid #101426;
+    color : #fff;
 }
 .SwitchBox{
     position: relative;
@@ -47,4 +52,12 @@
 .submitButton{
     position: relative;
     top : 10px;
+    left : 6px;
+    width : 60px;
+    height : 30px;
+    font-size : 1rem;
+    background-color : #192038;
+    border : 1px solid #101426;
+    border-radius : 10%;
+    color : #fff;
 }

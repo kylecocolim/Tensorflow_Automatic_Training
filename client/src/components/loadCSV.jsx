@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import Papa from 'papaparse';
+import './css/loadCSV.css'
 export default class CSVSelector extends Component{
     constructor(props){
         super(props)
@@ -8,6 +9,7 @@ export default class CSVSelector extends Component{
             data : '',
         }
         this.onChangeState.bind(this);
+        this.handleloadCSV.bind(this);
     }
     onChangeState(event){
         if (event.target.name == 'csvPath'){
@@ -25,6 +27,7 @@ export default class CSVSelector extends Component{
         
     }
     handleloadCSV(event){
+        if(this.state.csvPath.length > 1){
             let path = this.state.csvPath
             Papa.parse(path, {
                 complete: function(results) {
@@ -34,16 +37,16 @@ export default class CSVSelector extends Component{
                     })
                 }
             });   
-        
+        }
        
     }
 
     render(){
         return(
             <div>
-                <input type='file' name='csvPath' onChange={this.onChangeState.bind(this)} ></input>
-                {this.state.csvPath}<br/>
-                <button onClick ={this.handleloadCSV} value="Load CSV"></button>
+                <input id="CSVLoader" type='file' name='csvPath' onChange={this.onChangeState.bind(this)} ></input>
+                
+                <button id="loadButton" onClick ={this.handleloadCSV} value="Load CSV"></button>
             </div>
         )
 

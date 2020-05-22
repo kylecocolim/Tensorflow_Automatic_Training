@@ -7,14 +7,15 @@ export default class Model extends Component{
     constructor(props){
         super(props);
         this.state = {
-            model : new String() ,
-            inputShape : new String(),
-            n_classes : new String(),
-            include_top : new Boolean(),
-            loss : new String(),
-            Batch_size : new String(),
-            Optimizer : new String(),
-            Metrics : new String()
+            model : '' ,
+            inputShape : '',
+            n_classes : '',
+            loss : '',
+            Batch_size :'',
+            Optimizer : '',
+            Metrics : '',
+            epochs : '',
+            learning_rate : ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,13 +43,14 @@ export default class Model extends Component{
             model: this.state.model,
             inputShape : this.state.inputShape,
             n_classes : this.state.n_classes,
-            include_top : this.state.include_top,
             loss : this.state.loss,
             optimizer : this.state.optimizer,
             batch_size : this.state.Batch_size,
-            metrics : this.state.Metrics
+            metrics : this.state.Metrics,
+            epochs : this.state.epochs,
+            learning_rate : this.state.learning_rate
         };
-        axios.post(`http://127.0.0.1:3000/api`, {payload})
+        axios.post(`http://127.0.0.1:5000/api`, {payload})
         .then(res => {
             console.log(res);
             console.log(res.data);
@@ -67,7 +69,7 @@ export default class Model extends Component{
                     <form onSubmit={this.handleSubmit}>
                     <Form>
                         <Form.Group>
-                            <Form.Label>Model</Form.Label>
+                            <Form.Label> Model</Form.Label>
                             <Form.Control as="select" name="model" ref={model => this.model=model} onChange={this.getSelectValue.bind(this)}custom>
                             <option>default</option>
                             <option>VGG16</option>
@@ -78,9 +80,14 @@ export default class Model extends Component{
                             </Form.Control>
                         </Form.Group>
                         </Form>
-                        <span id="formexplain">Input Shape</span><div id="inputForm"><input type='text' name='inputShape' onChange={this.handleChange}/></div>
-                        <span id="formexplain">N Classes </span><div id="inputForm"> <input type='text' name="n_classes" onChange={this.handleChange}/> </div>
-                        <span id="formexplain">Batch_size </span><div id="inputForm"> <input type='text' name="Batch_size" onChange={this.handleChange}/> </div>
+                        <form autoComplete='off'>
+                            <span id="formexplain">Input Shape</span><div id="inputForm"><input id="inputBox" type='text' name='inputShape' onChange={this.handleChange}/></div>
+                            <span id="formexplain">N Classes </span><div id="inputForm"> <input id="inputBox" type='text' name="n_classes" onChange={this.handleChange}/> </div>
+                            <span id="formexplain">Batch_size </span><div id="inputForm"> <input id="inputBox" type='text' name="Batch_size" onChange={this.handleChange}/> </div>
+                            <span id="formexplain">Epochs </span><div id="inputForm"> <input id="inputBox" type='text' name="epochs" onChange={this.handleChange}/> </div>
+                            <span id="formexplain">Learning Rate </span><div id="inputForm"> <input id="inputBox" type='text' name="Learning_rate" onChange={this.handleChange}/> </div>
+
+                        </form>
                         <Form>
                         <Form.Group>
                             <Form.Label>Loss</Form.Label>
@@ -89,10 +96,7 @@ export default class Model extends Component{
                             <option>Categorical Cross Entropy</option>
                             <option>Binary Cross Entropy</option>
                             <option>Mean Square Error</option>
-                            <option>Mean Absolute Percentage Error</option>
                             <option>Hinge</option>
-                            <option>categorical_hinge</option>
-                            <option>logcosh</option>
                             </Form.Control>
                         </Form.Group>
                         </Form>
@@ -111,14 +115,7 @@ export default class Model extends Component{
                             </Form.Control>
                         </Form.Group>
                         </Form>
-                        <div className="SwitchBox">
-                        <Form>
-                            <Form.Check 
-                                type="switch"
-                                id="include_top"
-                                label="Include Top"/>
-                            </Form>
-                        </div>
+                        
                         <input className="submitButton" type='submit' value='Start'/>
 
                     </form>

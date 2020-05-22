@@ -4,7 +4,6 @@ import DashBoard from '../components/DashBoard';
 const famousModel = () =>{
     return(
         <div>
-            <div id="welcome">Tensorflow Model Trainer</div>
             <Model/>
             <DashBoard/>
         </div>

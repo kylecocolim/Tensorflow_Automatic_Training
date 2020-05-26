@@ -4,7 +4,7 @@
     top : 150px;
     left : 50px;   
     width : 350px;
-    height : 85% ;
+    height : 750px ;
     background-color: #1f2940;
     color : white;
 }
@@ -49,11 +49,11 @@
     top : 0px;
     left : 0px;
 }
-.submitButton{
+.TrainStartButton{
     position: relative;
     top : 10px;
     left : 6px;
-    width : 60px;
+    width : 100px;
     height : 30px;
     font-size : 1rem;
     background-color : #192038;

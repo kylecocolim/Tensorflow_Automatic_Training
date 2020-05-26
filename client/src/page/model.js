@@ -1,13 +1,16 @@
 import React from 'react';
-import Model from '../components/Model';
+import ModelBuilder from '../components/Model';
 import DashBoard from '../components/DashBoard';
-const famousModel = () =>{
-    return(
+class famousModel extends React.Component{
+    
+    render(){
+        return(
         <div>
-            <Model/>
+            <ModelBuilder/>
             <DashBoard/>
         </div>
     )
+    }
 }
 
 export default famousModel;

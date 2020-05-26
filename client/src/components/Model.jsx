@@ -3,7 +3,7 @@ import axios from 'axios';
 import './css/Model.css';
 import {Form} from 'react-bootstrap';
 
-export default class Model extends Component{
+export default class ModelBuilder extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -11,7 +11,7 @@ export default class Model extends Component{
             inputShape : '',
             n_classes : '',
             loss : '',
-            Batch_size :'',
+            Batch_size :0,
             Optimizer : '',
             Metrics : '',
             epochs : '',
@@ -58,6 +58,7 @@ export default class Model extends Component{
         .catch(err => {
             console.log(err);
         }); 
+        alert(`Start Train! ${this.state.epochs}`)
     }
 
 
@@ -116,7 +117,7 @@ export default class Model extends Component{
                         </Form.Group>
                         </Form>
                         
-                        <input className="submitButton" type='submit' value='Start'/>
+                        <input className="TrainStartButton" type='submit' value='Train Start'/>
 
                     </form>
                     </div>

@@ -1,9 +1,11 @@
 import tensorflow as tf 
 from .datasetUtil import dataset , filelength
 from tensorflow.keras.applications import VGG16,VGG19 ,InceptionV3
+from .Callbacks import CustomCallback
 class inference_load():
     def __init__(self,params,csvPath):
-        self.csvPath = 'E:\Foto\Tensorflow_Train_Tool\server\dataset\dataset.csv'
+        print(params)
+        self.csvPath = 'server/dataset/dataset.csv'
         self.model = params['model'] 
         self.inputShape = (int(params['inputShape']),int(params['inputShape']),3)
         self.include_top = False
@@ -53,14 +55,18 @@ class inference_load():
             return tf.keras.optimizers.AdaMax(learning_rate=self.learning_rate)
     def run(self):
         trainDataset , testDataset = dataset(self.csvPath,self.batch_size,self.inputShape[:2])
-        file_length = filelength(self.csvPath)
+        
+        
+        if len(trainDataset) == 0:
+            return -1
 
+        file_length = filelength(self.csvPath)
         x = tf.keras.Input(shape=self.inputShape)
         model = self.load(x)
         flat_layer = tf.keras.layers.Flatten()(model.layers[-1].output)
-        fc = tf.keras.layers.Dense(int(self.n_classes),activation='softmax')(flat_layer)
-        steps_per_epoch = int(file_length/ int(self.batch_size ))
-        model = tf.keras.Model(inputs=x,outputs=fc)
+        classfictaion = tf.keras.layers.Dense(int(self.n_classes),activation='softmax')(flat_layer)
+        steps_per_epoch = int(file_length/self.batch_size)
+        model = tf.keras.Model(inputs=x,outputs=classfictaion)
         model.compile(loss=self.lossParser(),metrics=self.metrics,optimizer=self.OptimizerSelector())
         model.summary()
         model.fit_generator(
@@ -69,6 +75,6 @@ class inference_load():
             validation_steps=5,
             epochs=self.epochs,
             steps_per_epoch=steps_per_epoch,
-            callbacks= [callback]
+            callbacks = [CustomCallback()]
             )
         model.save(self.modelOutputPath)    

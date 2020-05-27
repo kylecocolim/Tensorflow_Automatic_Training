@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './css/DashBoard.css';
 import axios from 'axios';
-import lossChart from './lossChart/Chart';
 
 
 
@@ -14,8 +13,9 @@ export default class DashBoard extends Component{
             epochs : 0,
             curr_losses : 0.0,
             curr_batch : 0,
+            IsTraining : false
         }
-
+        this.setTrainingFlag.bind(this);
         this.updateTrainStat.bind(this);
         
     }
@@ -48,15 +48,29 @@ export default class DashBoard extends Component{
             }
         )
     }
+    setTrainingFlag(){
+        axios.get('http://localhost:5000/callback/training_status').then(
+            response=>{
+                this.setState({
+                    IsTraining : response.data.training_status
+                })
+            }
+        ).catch(
+            response=>{
+                console.log(response)
+            }
+        )
+    }
     componentDidMount(){
         this.isGPUavailable()  
-
+        setInterval(this.updateTrainStat,1000)
+        //clearInterval(this.state.IsTraining,500)
     }
+   
 
     render(){
         return(
             <div className="DashBoardContainer"> 
-            {this.updateTrainStat()}  
                 <div className = "paramsGrid">
                     <div className ="modelName">Model Name</div>
                     <div className = "train_scalable_learning_rate">learning_rate</div>

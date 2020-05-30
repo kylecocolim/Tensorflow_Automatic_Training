@@ -2,27 +2,28 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import './css/Model.css';
 import {Form} from 'react-bootstrap';
+import DashBoard from './DashBoard';
 
 export default class ModelBuilder extends Component{
     constructor(props){
         super(props);
         this.state = {
-            model : '' ,
+            model : 'default' ,
             inputShape : '',
             n_classes : '',
             loss : '',
             Batch_size :0,
             Optimizer : '',
             Metrics : '',
-            epochs : '',
-            learning_rate : ''
+            epochs : 0,
+            learning_rate : '',
+            isTraining : false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(event){
         this.setState({ [event.target.name] : event.target.value});
-        
     }
     getSelectValue(event){
         this.setState({ [event.target.name] : event.target.value});
@@ -53,12 +54,19 @@ export default class ModelBuilder extends Component{
         axios.post(`http://127.0.0.1:5000/api`, {payload})
         .then(res => {
             console.log(res);
-            console.log(res.data);
+            if(res.data == 'Empty Dataset'){
+                this.setState({
+                    isTraining :false
+                })
+            }
         })
         .catch(err => {
             console.log(err);
         }); 
-        alert(`Start Train! ${this.state.epochs}`)
+        alert(`Start Train! ${this.state.epochs}epochs`)
+        this.setState({
+            isTraining : true
+        });
     }
 
 
@@ -123,7 +131,7 @@ export default class ModelBuilder extends Component{
                     </div>
                     
                 </div>
-                
+                <DashBoard training_status={this.state.isTraining} TotalEpochs={this.state.epochs}></DashBoard>
             </div>
         )
     }

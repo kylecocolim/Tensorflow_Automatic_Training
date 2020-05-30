@@ -15,8 +15,8 @@ curr_batch = int()
 epochs = int()
 accuracy = float()
 modelName = str()
-training_status = False
-
+cache = {}
+cache['training_status'] = False
 CORS(app)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
@@ -32,7 +32,7 @@ def train():
         if len(json_data) >= 1:  
             modelName = json_data['payload']['model']      
             model = inference_load(json_data['payload'],csvPath)
-            training_status = True 
+            cache['training_status'] = True 
             error = model.run()
             if error == -1:
                 return 'Empty Dataset'
@@ -41,20 +41,20 @@ def train():
 def GPUstatus(): 
     status = status_checker()
     print(status)
-    return status
+    if status == 'True':
+        return 'true'
+    elif status == 'False':
+        return 'false'
+    else:
+        return 'None'
 
-@app.route('/api/callback/training_status',methods =['GET'])
-def isTraining():
-    return training_status
 
 @app.route('/api/callback/train_stat',methods=['GET'])
 def train_stat():
-    if training_status == True:
+    if cache['training_status'] == True:
         stat = dict()
-        stat['epochs'] = epochs
-        stat['curr_loss'] = curr_loss
-        stat['curr_batch'] = curr_batch
-        
+        stat['epoch'] = epochs
+        stat['loss'] = curr_loss        
         data = json.dumps(stat)
         return data
     else:

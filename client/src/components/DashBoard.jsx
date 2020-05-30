@@ -3,19 +3,16 @@ import './css/DashBoard.css';
 import axios from 'axios';
 
 
-
 // Communication Componnet with Flask for Moniotr Training Process 
 export default class DashBoard extends Component{
     constructor(props){
         super(props)
         this.state ={
             GPU_status : false ,
-            epochs : 0,
-            curr_losses : 0.0,
-            curr_batch : 0,
-            IsTraining : false
+            epoch : 1,
+            loss : 0.0
+            
         }
-        this.setTrainingFlag.bind(this);
         this.updateTrainStat.bind(this);
         
     }
@@ -24,11 +21,14 @@ export default class DashBoard extends Component{
             response=>{
                 if(response.data == true){
                     this.setState({GPU_status:true})
-                    console.log(this.state.GPU_status)
+                    console.log(`GPU Status is ${this.state.GPU_status}`)
+                }
+                else if(response.data == false){
+                    this.setState({GPU_status:false})
+                    console.log(`GPU Status is ${this.state.GPU_status}`)
                 }
                 else{
-                    this.setState({GPU_status:false})
-                    console.log(this.state.GPU_status)
+                    console.log(`GPU Status is ${response.data}`)
                 }
             }  
         ).catch(
@@ -37,36 +37,38 @@ export default class DashBoard extends Component{
             }
         )
     }
-    updateTrainStat(){
-        axios.get('http://localhost:5000/api/callback/training_status').then(
-            response=>{
+
+    updateTrainStat = () =>{
+        let newEpoch = [...this.state.epoch]
+        axios.get('http://localhost:5000/api/callback/train_stat').then(
+            response => {            
+                newEpoch[item] = response.data.epoch    
                 this.setState({
-                    epochs : response.data.epochs,
-                    curr_losses : response.data.curr_loss,
-                    curr_batch : response.data.curr_batch})
-                    console.log(response.data)
-            }
-        )
-    }
-    setTrainingFlag(){
-        axios.get('http://localhost:5000/callback/training_status').then(
-            response=>{
-                this.setState({
-                    IsTraining : response.data.training_status
+                    epoch : newEpoch
+                    loss : response.data.loss
                 })
-            }
+            }          
         ).catch(
-            response=>{
-                console.log(response)
+            function(error){
+                console.log(error)
             }
         )
     }
     componentDidMount(){
         this.isGPUavailable()  
-        setInterval(this.updateTrainStat,1000)
+        //setInterval(this.updateTrainStat,1000)
         //clearInterval(this.state.IsTraining,500)
     }
-   
+    componentDidUpdate(){
+        let training_status = this.props.training_status 
+        if(training_status == true){
+            console.log(`training_status is ${training_status}`)
+            setInterval(this.updateTrainStat,5000)
+        }
+        else{
+            console.log(`training_status is ${training_status}`)
+        }
+    }
 
     render(){
         return(
@@ -75,17 +77,19 @@ export default class DashBoard extends Component{
                     <div className ="modelName">Model Name</div>
                     <div className = "train_scalable_learning_rate">learning_rate</div>
                     <div className = "train_epochs">
-                        <div>Epochs</div> 
-                    <div>{this.state.epochs}</div>
+                    <div id="epochs_names">Epochs</div>
+                    <div id="current_epochs">
+                        {this.state.epoch[this.state.epoch.length-1]}/ {this.props.TotalEpochs}</div>
                     </div> 
                 </div>
                 <div className = "train_loss">
                     <div>
-                        <lossChart></lossChart>
                     </div>
                 </div>
                 <div className="GPUStatus">
-                    <div className="GPUIndicatior">GPU Status</div> 
+                    <div className="GPUIndicatior">GPU Status</div>
+                    <div id={this.state.GPU_status ? 'gpu_available_dot' : 'gpu_unavailable_dot'} />
+                    
                 </div>
             </div>
         )

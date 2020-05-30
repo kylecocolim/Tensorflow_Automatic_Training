@@ -43,10 +43,22 @@
     background-color: red;
 }
 .train_epochs{
-    display:flex;
     width:34%;
     height: 100%;
     background-color: violet;
+}
+#epochs_names{
+    position: relative;
+    text-align: center;
+    position : relative;
+    height: 15px;
+    width:100%;
+}
+#current_epochs{
+    position: relative;
+    text-align: center;
+    font-size: 50px;
+    color : white;
 }
 .train_scalable_learning_rate{
     display : flex;
@@ -64,19 +76,19 @@
 }
 #gpu_available_dot{
     position: relative;
-    top : 7px;
-    left :4px;
-    width:10px;
-    height : 30%;
+    top : 15px;
+    left :35px;
+    width: 40%;
+    height : 40%;
     border-radius: 50%;
     background-color: greenyellow;
 }
 #gpu_unavailable_dot{
     position: relative;
-    top : 7px;
-    left : 10px;
-    width:10px;
-    height : 10px;
+    top : 15px;
+    left :35px;
+    width: 40%;
+    height : 40%;
     border-radius: 50%;
     background-color: red;
 }

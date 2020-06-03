@@ -16,7 +16,7 @@ class inference_load():
         self.metrics = ['acc']
         self.n_classes = params['n_classes']
         self.modelOutputPath = 'results/saved_model.h5'
-        self.learning_rate = 0.001
+        self.learning_rate = params['learning_rate']
         self.epochs = int(params['epochs'])
         
     def load(self,x):        

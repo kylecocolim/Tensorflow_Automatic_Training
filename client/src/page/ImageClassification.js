@@ -2,7 +2,7 @@ import React from 'react';
 import ModelBuilder from '../components/Model';
 const ImageClassification =() => {
      return(
-        <div>
+        <div> 
             <ModelBuilder/>
         </div>
     )

@@ -1,0 +1,63 @@
+.DashBoardContainer{
+    position: relative;
+    display : flex;
+    top : 0px;
+    left : 90px;
+    height : 600px;
+    width : 900px;
+    color: white;
+}
+.flexBoxColunm{
+    flex-direction: column;
+    width:550px;
+    height:600px;
+}
+.lossChart{
+    position: relative;
+    justify-content: center;
+    width : 550px;
+    height : 400px;
+    background-color: #1f2940;
+    border-radius : 5px;
+}
+.lossChart.inboxWord{
+    position: relative;
+    top : 20px;
+    font-size : 24px;
+}
+.EvaluateBox{
+    position: relative;
+    top:50px;
+    width:550px;
+    height: 400px;
+    background-color: #1f2940;
+    border-radius : 5px;
+}
+.StatusBox{
+    left :30px;
+    width : 150px;
+    height : 50px;
+    background-color : #1f2940;
+    border-radius : 5px;
+    text-align: center;
+
+}
+.StatusBox.GPUStatus{
+    position: relative;
+    left :30px;
+   
+}
+.StatusBox.TrainingStatus{
+    position: relative;
+    top : 30px;
+}
+.EpochBox{
+    position: relative;
+    top: 60px;
+    width : 150px;
+    height: 120px;
+    border-radius : 5px;
+
+    left:30px;
+    background-color: #1f2940;
+}

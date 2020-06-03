@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import axios from 'axios';
-import './css/Model.css';
+import '../css/Model.css';
 import {Form} from 'react-bootstrap';
+
 import DashBoard from './DashBoard';
 
 export default class ModelBuilder extends Component{
@@ -9,14 +10,14 @@ export default class ModelBuilder extends Component{
         super(props);
         this.state = {
             model : 'default' ,
-            inputShape : '',
-            n_classes : '',
+            inputShape : 0,
+            n_classes : 0,
             loss : '',
             Batch_size :0,
             Optimizer : '',
             Metrics : '',
             epochs : 0,
-            learning_rate : '',
+            learning_rate : 0.001,
             isTraining : false
         }
         this.handleChange = this.handleChange.bind(this);
@@ -63,16 +64,34 @@ export default class ModelBuilder extends Component{
         .catch(err => {
             console.log(err);
         }); 
-        alert(`Start Train! ${this.state.epochs}epochs`)
-        this.setState({
-            isTraining : true
-        });
+        alert(`Start Train! ${this.state.epochs} epochs`)
+        axios.get(`https://127.0.0.1:5000/api/training_status`,{payload})
+        .then(res=>{
+            if(res.data == 'true'){
+                this.setState({
+                    isTraining:true
+                })
+            }
+            else if(res.data == 'false'){
+                this.setState({
+                    isTraining : false
+                })
+            }
+            else{
+                console.log('None State')
+            }
+        })
     }
-
+    
 
     render(){
+        let style = {
+            display : 'flex',
+            position : 'relative',
+            top : 30
+        }
         return(
-            <div>
+            <div className="Container" style={style}>
                 <div className="FormContainer">
                     <div className="ModelSelector">  
                     <form onSubmit={this.handleSubmit}>
@@ -131,7 +150,7 @@ export default class ModelBuilder extends Component{
                     </div>
                     
                 </div>
-                <DashBoard training_status={this.state.isTraining} TotalEpochs={this.state.epochs}></DashBoard>
+                <DashBoard  training_status={this.state.isTraining} ModelName={this.state.model} TotalEpochs={this.state.epochs}></DashBoard>
             </div>
         )
     }

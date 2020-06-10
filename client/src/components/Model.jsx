@@ -3,19 +3,16 @@ import axios from 'axios';
 import '../css/Model.css';
 import {Form} from 'react-bootstrap';
 
-import DashBoard from './DashBoard';
-
 export default class ModelBuilder extends Component{
     constructor(props){
         super(props);
         this.state = {
-            model : 'default' ,
+            model : '' ,
             inputShape : 0,
             n_classes : 0,
             loss : '',
             Batch_size :0,
             Optimizer : '',
-            Metrics : '',
             epochs : 0,
             learning_rate : 0.001,
             isTraining : false
@@ -48,11 +45,10 @@ export default class ModelBuilder extends Component{
             loss : this.state.loss,
             optimizer : this.state.optimizer,
             batch_size : this.state.Batch_size,
-            metrics : this.state.Metrics,
             epochs : this.state.epochs,
             learning_rate : this.state.learning_rate
         };
-        axios.post(`http://127.0.0.1:5000/api`, {payload})
+        axios.post(`http://127.0.0.1:5000/api/inference/startTrain`, {payload})
         .then(res => {
             console.log(res);
             if(res.data == 'Empty Dataset'){
@@ -65,33 +61,15 @@ export default class ModelBuilder extends Component{
             console.log(err);
         }); 
         alert(`Start Train! ${this.state.epochs} epochs`)
-        axios.get(`https://127.0.0.1:5000/api/training_status`,{payload})
-        .then(res=>{
-            if(res.data == 'true'){
-                this.setState({
-                    isTraining:true
-                })
-            }
-            else if(res.data == 'false'){
-                this.setState({
-                    isTraining : false
-                })
-            }
-            else{
-                console.log('None State')
-            }
+        this.setState({
+            isTraining: true
         })
     }
-    
 
     render(){
-        let style = {
-            display : 'flex',
-            position : 'relative',
-            top : 30
-        }
+
         return(
-            <div className="Container" style={style}>
+            <div className="ModelBuilder" >
                 <div className="FormContainer">
                     <div className="ModelSelector">  
                     <form onSubmit={this.handleSubmit}>
@@ -148,9 +126,7 @@ export default class ModelBuilder extends Component{
 
                     </form>
                     </div>
-                    
                 </div>
-                <DashBoard  training_status={this.state.isTraining} ModelName={this.state.model} TotalEpochs={this.state.epochs}></DashBoard>
             </div>
         )
     }

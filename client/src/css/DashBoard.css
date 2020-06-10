@@ -3,14 +3,16 @@
     display : flex;
     top : 0px;
     left : 90px;
-    height : 600px;
+    height : 900px;
     width : 900px;
     color: white;
 }
 .flexBoxColunm{
     flex-direction: column;
-    width:550px;
-    height:600px;
+}
+.flexBoxColunm.status{
+    position: relative;
+    margin-left : 50px;
 }
 .lossChart{
     position: relative;

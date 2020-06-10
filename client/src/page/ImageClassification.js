@@ -1,9 +1,17 @@
 import React from 'react';
 import ModelBuilder from '../components/Model';
+import DashBoard from '../components/DashBoard'
 const ImageClassification =() => {
-     return(
-        <div> 
+    let style ={
+        display : 'flex',
+        position : 'relative',
+        top : 30
+    }
+    return(
+        <div style ={style}> 
             <ModelBuilder/>
+            <DashBoard/>
+
         </div>
     )
     

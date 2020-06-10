@@ -26,8 +26,8 @@ export default class StatusComponent extends Component{
         }
         return(
             <div>
-                <span className="GPUStatus InboxWord" style={wordingStyle}>{this.props.word}</span> 
-                <div id="GPUStatus_Round"style={this.props.Status ? enAble_Status_Style : disAble_Status_Style} />
+                <span className="Status InboxWord" style={wordingStyle}>{this.props.word}</span> 
+                <div id="Status_Round"style={this.props.status ? enAble_Status_Style : disAble_Status_Style} />
             
             </div>
                 

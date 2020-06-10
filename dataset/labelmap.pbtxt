@@ -1,0 +1,524 @@
+{
+ id:0
+ name:Apple Braeburn
+}
+{
+ id:1
+ name:Apple Crimson Snow
+}
+{
+ id:2
+ name:Apple Golden 1
+}
+{
+ id:3
+ name:Apple Golden 2
+}
+{
+ id:4
+ name:Apple Golden 3
+}
+{
+ id:5
+ name:Apple Granny Smith
+}
+{
+ id:6
+ name:Apple Pink Lady
+}
+{
+ id:7
+ name:Apple Red 1
+}
+{
+ id:8
+ name:Apple Red 2
+}
+{
+ id:9
+ name:Apple Red 3
+}
+{
+ id:10
+ name:Apple Red Delicious
+}
+{
+ id:11
+ name:Apple Red Yellow 1
+}
+{
+ id:12
+ name:Apple Red Yellow 2
+}
+{
+ id:13
+ name:Apricot
+}
+{
+ id:14
+ name:Avocado
+}
+{
+ id:15
+ name:Avocado ripe
+}
+{
+ id:16
+ name:Banana
+}
+{
+ id:17
+ name:Banana Lady Finger
+}
+{
+ id:18
+ name:Banana Red
+}
+{
+ id:19
+ name:Beetroot
+}
+{
+ id:20
+ name:Blueberry
+}
+{
+ id:21
+ name:Cactus fruit
+}
+{
+ id:22
+ name:Cantaloupe 1
+}
+{
+ id:23
+ name:Cantaloupe 2
+}
+{
+ id:24
+ name:Carambula
+}
+{
+ id:25
+ name:Cauliflower
+}
+{
+ id:26
+ name:Cherry 1
+}
+{
+ id:27
+ name:Cherry 2
+}
+{
+ id:28
+ name:Cherry Rainier
+}
+{
+ id:29
+ name:Cherry Wax Black
+}
+{
+ id:30
+ name:Cherry Wax Red
+}
+{
+ id:31
+ name:Cherry Wax Yellow
+}
+{
+ id:32
+ name:Chestnut
+}
+{
+ id:33
+ name:Clementine
+}
+{
+ id:34
+ name:Cocos
+}
+{
+ id:35
+ name:Corn
+}
+{
+ id:36
+ name:Corn Husk
+}
+{
+ id:37
+ name:Cucumber Ripe
+}
+{
+ id:38
+ name:Cucumber Ripe 2
+}
+{
+ id:39
+ name:Dates
+}
+{
+ id:40
+ name:Eggplant
+}
+{
+ id:41
+ name:Fig
+}
+{
+ id:42
+ name:Ginger Root
+}
+{
+ id:43
+ name:Granadilla
+}
+{
+ id:44
+ name:Grape Blue
+}
+{
+ id:45
+ name:Grape Pink
+}
+{
+ id:46
+ name:Grape White
+}
+{
+ id:47
+ name:Grape White 2
+}
+{
+ id:48
+ name:Grape White 3
+}
+{
+ id:49
+ name:Grape White 4
+}
+{
+ id:50
+ name:Grapefruit Pink
+}
+{
+ id:51
+ name:Grapefruit White
+}
+{
+ id:52
+ name:Guava
+}
+{
+ id:53
+ name:Hazelnut
+}
+{
+ id:54
+ name:Huckleberry
+}
+{
+ id:55
+ name:Kaki
+}
+{
+ id:56
+ name:Kiwi
+}
+{
+ id:57
+ name:Kohlrabi
+}
+{
+ id:58
+ name:Kumquats
+}
+{
+ id:59
+ name:Lemon
+}
+{
+ id:60
+ name:Lemon Meyer
+}
+{
+ id:61
+ name:Limes
+}
+{
+ id:62
+ name:Lychee
+}
+{
+ id:63
+ name:Mandarine
+}
+{
+ id:64
+ name:Mango
+}
+{
+ id:65
+ name:Mango Red
+}
+{
+ id:66
+ name:Mangostan
+}
+{
+ id:67
+ name:Maracuja
+}
+{
+ id:68
+ name:Melon Piel de Sapo
+}
+{
+ id:69
+ name:Mulberry
+}
+{
+ id:70
+ name:Nectarine
+}
+{
+ id:71
+ name:Nectarine Flat
+}
+{
+ id:72
+ name:Nut Forest
+}
+{
+ id:73
+ name:Nut Pecan
+}
+{
+ id:74
+ name:Onion Red
+}
+{
+ id:75
+ name:Onion Red Peeled
+}
+{
+ id:76
+ name:Onion White
+}
+{
+ id:77
+ name:Orange
+}
+{
+ id:78
+ name:Papaya
+}
+{
+ id:79
+ name:Passion Fruit
+}
+{
+ id:80
+ name:Peach
+}
+{
+ id:81
+ name:Peach 2
+}
+{
+ id:82
+ name:Peach Flat
+}
+{
+ id:83
+ name:Pear
+}
+{
+ id:84
+ name:Pear 2
+}
+{
+ id:85
+ name:Pear Abate
+}
+{
+ id:86
+ name:Pear Forelle
+}
+{
+ id:87
+ name:Pear Kaiser
+}
+{
+ id:88
+ name:Pear Monster
+}
+{
+ id:89
+ name:Pear Red
+}
+{
+ id:90
+ name:Pear Stone
+}
+{
+ id:91
+ name:Pear Williams
+}
+{
+ id:92
+ name:Pepino
+}
+{
+ id:93
+ name:Pepper Green
+}
+{
+ id:94
+ name:Pepper Orange
+}
+{
+ id:95
+ name:Pepper Red
+}
+{
+ id:96
+ name:Pepper Yellow
+}
+{
+ id:97
+ name:Physalis
+}
+{
+ id:98
+ name:Physalis with Husk
+}
+{
+ id:99
+ name:Pineapple
+}
+{
+ id:100
+ name:Pineapple Mini
+}
+{
+ id:101
+ name:Pitahaya Red
+}
+{
+ id:102
+ name:Plum
+}
+{
+ id:103
+ name:Plum 2
+}
+{
+ id:104
+ name:Plum 3
+}
+{
+ id:105
+ name:Pomegranate
+}
+{
+ id:106
+ name:Pomelo Sweetie
+}
+{
+ id:107
+ name:Potato Red
+}
+{
+ id:108
+ name:Potato Red Washed
+}
+{
+ id:109
+ name:Potato Sweet
+}
+{
+ id:110
+ name:Potato White
+}
+{
+ id:111
+ name:Quince
+}
+{
+ id:112
+ name:Rambutan
+}
+{
+ id:113
+ name:Raspberry
+}
+{
+ id:114
+ name:Redcurrant
+}
+{
+ id:115
+ name:Salak
+}
+{
+ id:116
+ name:Strawberry
+}
+{
+ id:117
+ name:Strawberry Wedge
+}
+{
+ id:118
+ name:Tamarillo
+}
+{
+ id:119
+ name:Tangelo
+}
+{
+ id:120
+ name:Tomato 1
+}
+{
+ id:121
+ name:Tomato 2
+}
+{
+ id:122
+ name:Tomato 3
+}
+{
+ id:123
+ name:Tomato 4
+}
+{
+ id:124
+ name:Tomato Cherry Red
+}
+{
+ id:125
+ name:Tomato Heart
+}
+{
+ id:126
+ name:Tomato Maroon
+}
+{
+ id:127
+ name:Tomato not Ripened
+}
+{
+ id:128
+ name:Tomato Yellow
+}
+{
+ id:129
+ name:Walnut
+}
+{
+ id:130
+ name:Watermelon
+}

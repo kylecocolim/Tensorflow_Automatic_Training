@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import { LineChart, CartesianGrid, Line, Legend, XAxis, YAxis, Tooltip, ResponsiveContainer} from 'recharts'
+import { AreaChart, Area,CartesianGrid, linearGradient,Legend, XAxis, YAxis, Tooltip} from 'recharts'
 
 
 export default class Chart extends Component{
@@ -14,18 +14,24 @@ export default class Chart extends Component{
             position : 'relative',
             top : 30
         }
-        return(
+        console.log(this.props.dataset)
+        return( 
             <div style={style}>
-                <ResponsiveContainer width={500} height={300}>
-                    <LineChart data={this.props.dataset} margin={{ top: 10, right: 5, left: 5, bottom: 5 }}>
-                        <XAxis datakey="timestamp" />
-                        <YAxis type="number" tick={{fontSize:'11px',padding:'5px'}}/>
-                        <Tooltip></Tooltip>
-                        <Legend></Legend>
-                        <Line type="monotone" dataKey="loss" strokeOpacity="10" stroke="#32e0c4" ></Line>
+                <AreaChart width={550} height={250} data={this.props.dataset}
+                        margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                        <defs>
+                            <linearGradient id="colorLoss" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
+                                <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+                            </linearGradient>
+                        </defs>
+                        <XAxis dataKey="epoch" />
+                        <YAxis />
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <Tooltip />
+                        <Area type="monotone" dataKey="loss" stroke="#8884d8" fillOpacity={1} fill="url(#colorLoss)" />
+                        </AreaChart>
 
-                    </LineChart>
-                </ResponsiveContainer>
             </div>
         )
     }

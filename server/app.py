@@ -2,7 +2,7 @@ from flask import Flask ,send_from_directory
 from flask_cors import CORS
 from api.status.API_STATUS import blueprint_api_status
 from api.inference.API_inference import blueprint_api_inference
-
+import os
 # Main Flask APP 
 app = Flask(__name__,static_folder='../client/build') 
 

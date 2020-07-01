@@ -17,8 +17,7 @@ class inference_load():
         #self.metrics = [metric for metric in params['metrics']]
         self.metrics = ['acc']
         self.n_classes = params['n_classes']
-        self.modelOutputPath = 'server/results/saved_model_{datetime}_{epochs}.h5'
-        self.learning_rate = params['learning_rate']
+        self.learning_rate = float(params['learning_rate'])
         self.epochs = int(params['epochs'])
         self.modelOutputPath = 'server/results/{datetime}_{epochs}_saved_model.h5'.format(        
             datetime = str(datetime.datetime.now())[:10].replace('-','_'),
@@ -28,13 +27,13 @@ class inference_load():
 
     def load(self,x):        
         if(self.model.lower() == 'vgg16'):
-            model = VGG16(include_top=self.include_top,input_shape = self.inputShape,input_tensor=x)
+            model = VGG16(include_top=self.include_top,input_shape = self.inputShape,weights='imagenet',input_tensor=x)
             return model 
         elif(self.model.lower() == 'vgg19'):
-            model = VGG19(include_top=self.include_top,input_shape = self.inputShape,input_tensor=x)
+            model = VGG19(include_top=self.include_top,input_shape = self.inputShape,weights='imagenet',input_tensor=x)
             return model
         elif(self.model.lower() == 'inception'):
-            model = InceptionV3(include_top=self.include_top,input_shape=self.inputShape,input_tensor=x)
+            model = InceptionV3(include_top=self.include_top,input_shape=self.inputShape,weights='imagenet',input_tensor=x)
             return model
     def lossParser(self):
         if self.loss == 'Categorical Cross Entropy':
@@ -60,6 +59,15 @@ class inference_load():
             return tf.keras.optimizers.Nadam(learning_rate=self.learning_rate)
         elif self.optimizer == 'AdaMax':
             return tf.keras.optimizers.AdaMax(learning_rate=self.learning_rate)
+    def add_regularization(model, regularizer=tf.keras.regularizers.l2(0.0001)):
+        if not isinstance(regularizer, tf.keras.regularizers.Regularizer):
+            return model
+
+        for layer in model.layers:
+            for attr in ['kernel_regularizer']:
+                if hasattr(layer, attr):
+                setattr(layer, attr, regularizer)
+        return model
     def run(self):
         trainDataset , testDataset = dataset(self.csvPath,self.evalPath,self.batch_size,self.inputShape[:2])
         
@@ -70,6 +78,7 @@ class inference_load():
         file_length = filelength(self.csvPath)
         x = tf.keras.Input(shape=self.inputShape)
         model = self.load(x)
+        model = self.add_regularization(model)        
         flat_layer = tf.keras.layers.Flatten()(model.layers[-1].output)
         classfictaion = tf.keras.layers.Dense(int(self.n_classes),activation='softmax')(flat_layer)
         steps_per_epoch = int(file_length/self.batch_size)

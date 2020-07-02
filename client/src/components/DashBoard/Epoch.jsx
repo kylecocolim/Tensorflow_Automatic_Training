@@ -1,23 +1,21 @@
-import React ,{Component} from 'react';
+import React ,{useState} from 'react';
 
-export default class EpochComponent extends Component{
-    constructor(props){
-        super(props)
+function EpochStatus(props){
 
+    let WordStyle ={
+        fontSize : 20,
     }
-    render(){
-        let WordStyle ={
-            fontSize : 22,
-            borderBottom : '1px solid white'
-        }
-        let style={
-            fontSize: 50
-        }
-        return(
-            <div>
-                <div style={WordStyle}>Epochs</div>
-                <div style={style}>{this.props.CurrEpoch} / {this.props.TotalEpochs}</div>
-            </div>
-        )
+    let style={
+        paddingTop : 3,
+        fontSize: 45,
+        color : 'rgba(255,255,255,.8)'
     }
+    return(
+        <div>
+            <div style={WordStyle}>Epoch</div>
+            <div style={style}>{props.currentEpoch} / {props.TotalEpoch}</div>
+        </div>
+    )
 }
+
+export default EpochStatus;

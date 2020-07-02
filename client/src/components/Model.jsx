@@ -14,8 +14,7 @@ export default class ModelBuilder extends Component{
             Batch_size :0,
             Optimizer : '',
             epochs : 0,
-            learning_rate : 0.001,
-            isTraining : false
+            learning_rate : ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -51,13 +50,7 @@ export default class ModelBuilder extends Component{
         axios.post(`http://127.0.0.1:5000/api/inference/startTrain`, {payload})
         .then(res => {
             console.log(res);
-            if(res.data == 'Empty Dataset'){
-                this.setState({
-                    isTraining :false
-                })
-            }
-        })
-        .catch(err => {
+        })  .catch(err => {
             console.log(err);
         }); 
         alert(`Start Train! ${this.state.epochs} epochs`)
@@ -81,17 +74,15 @@ export default class ModelBuilder extends Component{
                             <option>VGG16</option>
                             <option>VGG19</option>
                             <option>Inception</option>
-                            <option>ResNet</option>
-                            <option>Inception</option>
                             </Form.Control>
                         </Form.Group>
                         </Form>
                         <form autoComplete='off'>
-                            <span id="formexplain">Input Shape</span><div id="inputForm"><input id="inputBox" type='text' name='inputShape' onChange={this.handleChange}/></div>
-                            <span id="formexplain">N Classes </span><div id="inputForm"> <input id="inputBox" type='text' name="n_classes" onChange={this.handleChange}/> </div>
-                            <span id="formexplain">Batch_size </span><div id="inputForm"> <input id="inputBox" type='text' name="Batch_size" onChange={this.handleChange}/> </div>
-                            <span id="formexplain">Epochs </span><div id="inputForm"> <input id="inputBox" type='text' name="epochs" onChange={this.handleChange}/> </div>
-                            <span id="formexplain">Learning Rate </span><div id="inputForm"> <input id="inputBox" type='text' name="Learning_rate" onChange={this.handleChange}/> </div>
+                            <span id="formexplain">Input Shape</span><div id="inputForm"><input id="inputBox" type='text' name='inputShape' placeholder="150 (Image Shape)"onChange={this.handleChange}/></div>
+                            <span id="formexplain">N Classes </span><div id="inputForm"> <input id="inputBox" type='text' name="n_classes" placeholder="Number of Classes" onChange={this.handleChange}/> </div>
+                            <span id="formexplain">Batch_size </span><div id="inputForm"> <input id="inputBox" type='text' name="Batch_size" placeholder="Size of Batch" onChange={this.handleChange}/> </div>
+                            <span id="formexplain">Epochs </span><div id="inputForm"> <input id="inputBox" type='text' name="epochs" placeholder="Iteration Times" onChange={this.handleChange}/> </div>
+                            <span id="formexplain">Learning Rate </span><div id="inputForm"> <input id="inputBox" type='text' name="learning_rate" placeholder="0.001" onChange={this.handleChange}/> </div>
 
                         </form>
                         <Form>

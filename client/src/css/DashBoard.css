@@ -14,19 +14,50 @@
     position: relative;
     margin-left : 50px;
 }
-.lossChart{
+.lossChartContainer{
     position: relative;
     justify-content: center;
     width : 550px;
     height : 400px;
     background-color: #1f2940;
     border-radius : 5px;
+    margin-bottom : 30px;
 }
-.lossChart.inboxWord{
+.lossChartContainer.inboxWord{
     position: relative;
     top : 20px;
     font-size : 24px;
+    background-color: transparent;
 }
+.Chart{
+    position: relative;
+    top : 50px;
+    transition-duration: .4s;
+}
+.DataSelector{
+    position: absolute;
+    display : flex;
+    flex-direction: row;
+    right : 5px;
+}
+.DataSelectorBox{
+    width : 100px;
+    height : 25px;
+    border-top-left-radius : 3px;
+    border-top-right-radius : 3px;
+    border-bottom : 2px solid rgba(255,255,255,.8); 
+
+    background-color: rgba(31,40,50,.7);
+    margin-left : 5px;   
+    transition-duration: .3s;
+}
+.DataSelectorBox:hover{
+    transition-duration : .5s;
+    border-bottom-color: rgba(31,40,50,.7);
+    background-color :rgba(255,125,125,.7) !important; 
+
+}
+
 .EvaluateBox{
     position: relative;
     top:50px;
@@ -56,6 +87,16 @@
 .EpochBox{
     position: relative;
     top: 60px;
+    width : 150px;
+    height: 120px;
+    border-radius : 5px;
+
+    left:30px;
+    background-color: #1f2940;
+}
+.LearningRateBox{
+    position: relative;
+    top: 80px;
     width : 150px;
     height: 120px;
     border-radius : 5px;

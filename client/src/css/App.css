@@ -1,6 +1,9 @@
+:root{
+  --neongreen : #09ab72;
+}
 .App {
-  height: 1500px;
-
+  height: 130vh;
+  color : rgba(225,235,245,.9);
   text-align: center;
   background-color: #141b2d;
 }

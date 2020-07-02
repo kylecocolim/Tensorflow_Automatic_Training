@@ -6,7 +6,7 @@
     width : 350px;
     height : 750px ;
     background-color: #1f2940;
-    color : white;
+    border-radius: 5px;
 }
 .ModelSelector{
     position : relative;

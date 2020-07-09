@@ -85,11 +85,7 @@ export default class DashBoard extends Component{
                         trainfinishStatus : response.data.trainfinishStatus,
                         learningRate : response.data.learningRate
                 })
-                if(response.data.trainfinishStatus == true){
-                    this.setState({
-                        isTraining : false
-                    })
-                }
+               
             }
         )
                
@@ -131,10 +127,14 @@ export default class DashBoard extends Component{
                     <span className="lossChartContainer inboxWord">Train</span>
                     <Chart dataset={this.state.dummyData}/>
                 </div>
+<<<<<<< HEAD
                 <div className="lossChartContainer">
                     <span className="lossChartContainer inboxWord">Validation</span>
                     <ValChart dataset={this.state.dummyData_val} target="val_loss"></ValChart>
                 </div>
+=======
+           
+>>>>>>> eab5b7935b5f0a96fc31c93a8aa3b9b9dbc359c8
             </div>
             
             <div className="flexBoxColunm status">

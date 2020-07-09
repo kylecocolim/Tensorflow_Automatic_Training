@@ -23,7 +23,7 @@ function DataSelector(props){
         backgroundColor : props.selectedStroke
     }
     let uncheck_Box_Style={
-        backgroundColor : "#000000"
+        backgroundColor : "transparent"
     }
     return (
         <div className="DataSelector">

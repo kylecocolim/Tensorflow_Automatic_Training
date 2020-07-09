@@ -9,10 +9,10 @@ blueprint_api_inference = Blueprint('api_inference',__name__)
 cache = {}
 cache['TotalEpochs'] = 0
 cache['currentEpochs'] = 0
-cache['trainfinishStatus'] = True
+cache['trainfinishStatus'] = False
 cache['trainStat'] = []
 cache['defaultcsvPath'] = "../server/dataset/dataset.csv"
-
+cache['learningRate'] = float()
 
 
 @blueprint_api_inference.route('/api/inference/evaluate',methods=['GET'])
@@ -34,14 +34,22 @@ def trainStart():
             cache['TotalEpochs'] = 0
             cache['currentEpochs'] = 0
             cache['trainStat'] = []
+            cache['leraningRate'] = float()
             model = inference_load(json_data['payload'],cache['defaultcsvPath'])
             cache['TotalEpochs'] = json_data['payload']['epochs']
+            cache['leraningRate'] = float(json_data['payload']['learning_rate'])
             requests.post('http://localhost:5000/api/status/setTrainingStatus',data='True')
             cache['currentEpochs'] = 1
-            cache['trainfinishStatus'] = True
-            error = model.run()
             cache['trainfinishStatus'] = False
+            error = model.run()
+            cache['trainfinishStatus'] = True
+            requests.post('http://localhost:5000/api/status/setTrainingStatus',data='False')
             if error == -1:
+                cache['TotalEpochs'] = 0
+                cache['currentEpochs'] = 0
+                cache['trainStat'] = []
+                cache['leraningRate'] = float()
+                requests.post('http://localhost:5000/api/status/setTrainingStatus',data='False')
                 return 'Empty Dataset'
         return 'Finish'
 
@@ -52,10 +60,13 @@ def train_status():
     json_data = json.loads(json_data)
     if cache['currentEpochs'] != cache['TotalEpochs']:
         cache['currentEpochs'] +=1
-    #cache['trainStat'].append({
-    #    'epoch' : int(json_data['epoch']),
-    #    'loss' : float(json_data['loss'])
-    #})
+    cache['trainStat'].append({
+        'epoch' : int(json_data['epoch']),
+        'loss' : float(json_data['loss']),
+        'accuracy' : float(json_data['accuracy']),
+        'val_acc' : float(json_data['val_acc']),
+        'val_loss' : float(json_data['val_loss'])
+    })
     return 'ok'
 @blueprint_api_inference.route('/api/inference/callbacks/set_batch_loss', methods=['POST'])
 def train_batch_status():

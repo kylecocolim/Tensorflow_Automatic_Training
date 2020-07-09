@@ -3,7 +3,7 @@
 ### React + Flask + Tensorflow 
 
 ## How to Run
-```
+```W
 - Install dependency
 ----------------------
 python <3.6
@@ -17,7 +17,9 @@ npm install
 ----------------------
 pip install tensorflow pandas flask flask-cors
 python server/app.py
+----------------------
 ```
-
-## Curr CaptureShot
-<img src="./image/capture_shot_2020_05_22.JPG"/>
+### Must be Located dataset on /dataset folder and
+### train dataset name is dataset.csv , valid : eval_dataset.csv 
+### Will be Update for upload csv
+## Dashboard Demo : [Demo](http://94rising.xyz/DashBoard)

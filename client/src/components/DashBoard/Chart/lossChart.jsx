@@ -22,7 +22,10 @@ export default class Chart extends Component{
             position : 'relative',
             top : 30
         }
+<<<<<<< HEAD
         
+=======
+>>>>>>> eab5b7935b5f0a96fc31c93a8aa3b9b9dbc359c8
         return( 
             <div style={style}>
                 <DataSelector dataChanger={this.dataChanger} selectedStroke="#8884d8" name="Train_dataType"></DataSelector>
@@ -37,10 +40,17 @@ export default class Chart extends Component{
                         </defs>
                         <XAxis dataKey="epoch"/>
                         <YAxis />
+<<<<<<< HEAD
                         <Tooltip formatter={(okay) => new Intl.NumberFormat('en').format(okay)} />
                         <Area type="monotone" dataKey={this.state.dataType} stroke="#8884d8" fillOpacity={1} fill="url(#colorLoss)" />
                     </AreaChart>
                 </div>
+=======
+                        <Tooltip />
+                        <Area type="monotone" dataKey="loss" stroke="#8884d8" fillOpacity={1} fill="url(#colorLoss)" />
+                        </AreaChart>
+
+>>>>>>> eab5b7935b5f0a96fc31c93a8aa3b9b9dbc359c8
             </div>
         )
     }

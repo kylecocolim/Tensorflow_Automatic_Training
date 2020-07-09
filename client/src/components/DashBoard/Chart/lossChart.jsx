@@ -14,7 +14,6 @@ export default class Chart extends Component{
             position : 'relative',
             top : 30
         }
-        console.log(this.props.dataset)
         return( 
             <div style={style}>
                 <AreaChart width={550} height={250} data={this.props.dataset}
@@ -27,7 +26,6 @@ export default class Chart extends Component{
                         </defs>
                         <XAxis dataKey="epoch" />
                         <YAxis />
-                        <CartesianGrid strokeDasharray="3 3" />
                         <Tooltip />
                         <Area type="monotone" dataKey="loss" stroke="#8884d8" fillOpacity={1} fill="url(#colorLoss)" />
                         </AreaChart>

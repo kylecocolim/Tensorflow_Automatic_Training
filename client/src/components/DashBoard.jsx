@@ -70,11 +70,7 @@ export default class DashBoard extends Component{
                         trainStat : emptyArray.concat(response.data.trainStat),
                         trainfinishStatus : response.data.trainfinishStatus
                 })
-                if(response.data.trainfinishStatus == true){
-                    this.setState({
-                        isTraining : false
-                    })
-                }
+               
             }
         )
                
@@ -116,9 +112,7 @@ export default class DashBoard extends Component{
                     <span className="lossChart inboxWord">Train Loss</span>
                     <Chart dataset={this.state.trainStat} epochLength ={this.state.TotalEpochs}/>
                 </div>
-                <div className="EvaluateBox">
-                    <Evaluate></Evaluate>
-                </div>
+           
             </div>
             
             <div className="flexBoxColunm status">

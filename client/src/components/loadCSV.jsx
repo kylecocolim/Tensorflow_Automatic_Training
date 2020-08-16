@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import '../css/loadCSV.css'
 export default class CSVSelector extends Component{
     constructor(props){
         super(props)

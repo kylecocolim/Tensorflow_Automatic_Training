@@ -1,0 +1,12 @@
+#CSVLoader{
+    position: relative;
+    top : 100px;
+    background-color: white;
+}
+#loadButton{
+    position : relative;
+    top : 105px;
+    left : 10px;
+    width:50px;
+    height:29px;
+}

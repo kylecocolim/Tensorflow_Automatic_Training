@@ -1,0 +1,10 @@
+.DashBoardDemo {
+  position : relative;
+  display : flex;
+  flex-direction: row;
+  height: 130vh;
+  color : rgba(225,235,245,.9);
+  text-align: center;
+  background-color: #141b2d;
+  padding-top : 50px;
+}

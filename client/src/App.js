@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
-import './css/App.css';
+import './css/DashBoardStyle';
 import ImageClassification from './page/ImageClassification';
 import customModel from './page/customModel';
 import dataset from './page/dataset';

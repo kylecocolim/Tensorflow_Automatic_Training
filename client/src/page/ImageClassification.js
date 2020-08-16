@@ -1,6 +1,6 @@
 import React from 'react';
 import ModelBuilder from '../components/Model';
-import DashBoard from '../components/DashBoard'
+import DashBoard from '../components/DashBoardContainer'
 const ImageClassification =() => {
     let style ={
         display : 'flex',

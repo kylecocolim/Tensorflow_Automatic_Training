@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import axios from 'axios';
-import '../css/Model.css';
 import {Form} from 'react-bootstrap';
 
 export default class ModelBuilder extends Component{
@@ -78,11 +77,11 @@ export default class ModelBuilder extends Component{
                         </Form.Group>
                         </Form>
                         <form autoComplete='off'>
-                            <span id="formexplain">Input Shape</span><div id="inputForm"><input id="inputBox" type='text' name='inputShape' placeholder="150 (Image Shape)"onChange={this.handleChange}/></div>
-                            <span id="formexplain">N Classes </span><div id="inputForm"> <input id="inputBox" type='text' name="n_classes" placeholder="Number of Classes" onChange={this.handleChange}/> </div>
-                            <span id="formexplain">Batch_size </span><div id="inputForm"> <input id="inputBox" type='text' name="Batch_size" placeholder="Size of Batch" onChange={this.handleChange}/> </div>
-                            <span id="formexplain">Epochs </span><div id="inputForm"> <input id="inputBox" type='text' name="epochs" placeholder="Iteration Times" onChange={this.handleChange}/> </div>
-                            <span id="formexplain">Learning Rate </span><div id="inputForm"> <input id="inputBox" type='text' name="learning_rate" placeholder="0.001" onChange={this.handleChange}/> </div>
+                            <span id="formexplain">Input Shape</span><div className="ModelinputForm"><input id="inputBox" type='text' name='inputShape' placeholder="150 (Image Shape)"onChange={this.handleChange}/></div>
+                            <span id="formexplain">N Classes </span><div className="ModelinputForm"> <input id="inputBox" type='text' name="n_classes" placeholder="Number of Classes" onChange={this.handleChange}/> </div>
+                            <span id="formexplain">Batch_size </span><div className="ModelinputForm"> <input id="inputBox" type='text' name="Batch_size" placeholder="Size of Batch" onChange={this.handleChange}/> </div>
+                            <span id="formexplain">Epochs </span><div className="ModelinputForm"> <input id="inputBox" type='text' name="epochs" placeholder="Iteration Times" onChange={this.handleChange}/> </div>
+                            <span id="formexplain">Learning Rate </span><div className="ModelinputForm"> <input id="inputBox" type='text' name="learning_rate" placeholder="0.001" onChange={this.handleChange}/> </div>
 
                         </form>
                         <Form>

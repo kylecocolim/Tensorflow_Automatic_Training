@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import Canvas from './EvalCanvas/Canvas';
+import Canvas from './EvalCanvas/Canvas.jsx';
 import axios from 'axios';
-import { withRouter } from 'react-router';
 export default class Evaluate extends Component{
     constructor(props){
         super(props)

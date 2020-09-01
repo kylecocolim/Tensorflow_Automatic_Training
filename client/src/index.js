@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Root from './root/root';
-import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-    <Root />,
+    <Root />,  
   document.getElementById('root')
 );
-serviceWorker.unregister();
+

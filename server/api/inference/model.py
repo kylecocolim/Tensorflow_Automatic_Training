@@ -59,6 +59,8 @@ class inference_load():
             return tf.keras.optimizers.Nadam(learning_rate=self.learning_rate)
         elif self.optimizer == 'AdaMax':
             return tf.keras.optimizers.AdaMax(learning_rate=self.learning_rate)
+
+    # For Vanish Gradient
     def add_regularization(model, regularizer=tf.keras.regularizers.l2(0.0001)):
         if not isinstance(regularizer, tf.keras.regularizers.Regularizer):
             return model
@@ -66,7 +68,7 @@ class inference_load():
         for layer in model.layers:
             for attr in ['kernel_regularizer']:
                 if hasattr(layer, attr):
-                setattr(layer, attr, regularizer)
+                    setattr(layer, attr, regularizer)
         return model
     def run(self):
         trainDataset , testDataset = dataset(self.csvPath,self.evalPath,self.batch_size,self.inputShape[:2])

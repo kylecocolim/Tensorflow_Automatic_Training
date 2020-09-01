@@ -58,8 +58,10 @@ def trainStart():
 def train_status():
     json_data = request.get_json()
     json_data = json.loads(json_data)
+
     if cache['currentEpochs'] != cache['TotalEpochs']:
         cache['currentEpochs'] +=1
+    
     cache['trainStat'].append({
         'epoch' : int(json_data['epoch']),
         'loss' : float(json_data['loss']),
